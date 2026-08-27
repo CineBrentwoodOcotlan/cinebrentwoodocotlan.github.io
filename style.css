@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap');
+
+:root {
+  --paper:#efe8d6;
+  --ink:#221d16;
+  --pencil:#6f675a;
+  --link:#1b1bd0;
+  --red:#b23219;
+  --rule:#2a251d;
+  --body:Georgia,'Times New Roman',Times,serif;
+  --mono:'Courier Prime','Courier New',Courier,monospace;
+  --marker:'Permanent Marker','Courier New',cursive;
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.58;
+}
+img { display:block; max-width:100%; height:auto; }
+
+a { color:var(--link); text-decoration:underline; text-underline-offset:3px; }
+a:hover { background:var(--ink); color:var(--paper); text-decoration:none; }
+a:focus-visible { outline:2px solid var(--red); outline-offset:2px; }
+
+.page {
+  width:min(1180px, calc(100% - 56px));
+  margin:0 auto;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:210px minmax(0,1fr);
+  gap:50px;
+  padding-top:34px;
+}
+
+/* sidebar */
+.sidebar { padding-top:6px; }
+.sidebar-inner { position:sticky; top:34px; }
+.logo { margin:0 0 4px; line-height:.9; }
+.logo a,.logo a:hover { text-decoration:none; color:var(--ink); background:none; }
+.logo .big {
+  font-size:64px;
+  letter-spacing:2px;
+  display:block;
+}
+.logo .small {
+  display:block;
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:10px;
+  margin:10px 0 0 4px;
+  font-weight:700;
+}
+.logo-sub {
+  font-size:12.5px;
+  color:var(--pencil);
+  margin:8px 0 34px 4px;
+  letter-spacing:.5px;
+}
+.nav { list-style:none; padding:0; margin:0; }
+.nav li { margin:11px 0; }
+.nav li::before { content:'> '; color:var(--ink); }
+.nav .here a { color:var(--red); }
+
+/* main */
+.main { min-width:0; display:flex; flex-direction:column; min-height:calc(100vh - 34px);padding-top:40px; }
+/* home page: content flows normally; banner and footer live outside .main */
+.main-flow { display:block; min-height:0; }
+
+/* home: intro left, featured project right — featured gets the wider share */
+.hero-grid {
+  display:grid;
+  grid-template-columns:minmax(0,.98fr) minmax(320px,1.1fr);
+  gap:56px;
+  align-items:start;
+}
+
+.intro-block {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.intro-copy { max-width:none; text-wrap:pretty; }
+.intro-copy p:first-child { margin-top:0; }
+.mission {
+  max-width:none;
+  margin:24px 0 0;
+  font-weight:700;
+  font-size:18px;
+  line-height:1.55;
+}
+.todo-inline {
+  color:var(--red);
+  font-family:var(--mono);
+  font-size:.75em;
+  white-space:nowrap;
+}
+.todo-inline::before { content:'[ '; }
+.todo-inline::after { content:' ]'; }
+/* full-bleed banner across the whole page width */
+.hero-banner {
+  grid-column:1 / -1;
+  margin:14px 0 0;
+  width:100%;
+}
+.hero-banner img {
+  width:100%;
+  aspect-ratio:16 / 9;   /* change this to crop taller or shorter */
+  object-fit:cover;
+  filter:sepia(.2) contrast(1.03);
+}
+
+.feature-block {
+  min-width:0;
+}
+.feature-inner {
+  max-width:none;
+}
+h2 {
+  font-size:14px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  margin:0 0 18px;
+}
+.project-title {
+  color:var(--red);
+  font-size:38px;
+  line-height:1;
+  font-weight:700;
+  margin:0 0 28px;
+}
+.logline { margin:0; text-wrap:pretty; }
+.cta { margin:26px 0 0; text-align:right; }
+
+.footer {
+  margin-top:auto;
+  padding:44px 0 32px;
+  border-top:1px solid var(--rule);
+  font-size:13.5px;
+}
+/* home page footer: full width, centred, no rule above */
+.footer-wide {
+  grid-column:1 / -1;
+  margin-top:60px;
+  padding:26px 0 34px;
+  border-top:0;
+  text-align:center;
+}
+.footer-wide .contactline { justify-content:center; }
+.footer p { margin:0; }
+.footer .contactline { display:flex; flex-wrap:wrap; gap:0 8px; align-items:center; }
+.footer .fine { color:var(--pencil); font-size:12.5px; margin-top:10px; }
+.footer .sep { color:var(--pencil); }
+
+
+/* ============================================================
+   INNER PAGES — works / about / journal
+   Same vocabulary as the home page: serif body, mono for labels
+   and typed data, one dashed rule as the only divider motif.
+   ============================================================ */
+
+.page-head { margin:0 0 12px; }
+.page-head h1 {
+  font-size:14px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin:0 0 18px;
+}
+.project-sub {
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--pencil);
+  margin:0 0 6px;
+  letter-spacing:.4px;
+}
+
+/* section label above a block of prose */
+h3 {
+  font-family:var(--mono);
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--pencil);
+  margin:34px 0 10px;
+}
+h3:first-child { margin-top:0; }
+
+/* generic two-column split, mirrors .hero-grid */
+.split {
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);
+  gap:46px;
+  align-items:start;
+}
+.split-main { min-width:0; max-width:560px; }
+.split-aside {
+  min-width:0;
+  border-left:1px dashed rgba(111,103,90,.72);
+  padding-left:42px;
+}
+
+.body-copy p { margin:0 0 16px; }
+.body-copy p:last-child { margin-bottom:0; }
+
+/* plain horizontal divider between major sections */
+.rule { border:none; border-top:1px solid var(--rule); margin:52px 0 42px; }
+
+/* stacked list — themes, credits */
+.stack { list-style:none; padding:0; margin:0; }
+.stack li { margin:0 0 6px; }
+
+/* typed data block: details, status */
+.typed {
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.75;
+  margin:0;
+  white-space:pre;
+  overflow-x:auto;
+}
+
+/* a named person: character or team member */
+.person { margin:0 0 24px; }
+.person:last-child { margin-bottom:0; }
+.person .name { font-weight:700; margin:0; }
+.person .role {
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--pencil);
+  letter-spacing:.4px;
+  margin:2px 0 6px;
+}
+.person p:last-child { margin:0; }
+
+/* team grid on the about page */
+.team {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:42px;
+}
+.team .portrait { width:100%; margin:0 0 14px; }
+.team .portrait img { width:100%; aspect-ratio:3 / 4; object-fit:cover; filter:sepia(.2) contrast(1.03); }
+
+/* image placeholder, until real stills exist */
+.ph {
+  background:#141210;
+  color:#a89d88;
+  font-family:var(--mono);
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:14px;
+  aspect-ratio:3 / 4;
+}
+.ph.wide { aspect-ratio:4 / 3; }
+
+/* still on an inner page */
+.plate { margin:0 0 26px; width:100%; }
+.plate img { width:100%; aspect-ratio:4 / 3; object-fit:cover; filter:sepia(.2) contrast(1.03); }
+.plate figcaption {
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--pencil);
+  margin-top:8px;
+}
+
+/* journal entry list */
+.entries { margin:0; }
+.entry { padding:0 0 26px; margin:0 0 26px; border-bottom:1px dashed rgba(111,103,90,.5); }
+.entry:last-child { border-bottom:0; margin-bottom:0; padding-bottom:0; }
+.entry .date { font-family:var(--mono); font-size:12.5px; color:var(--pencil); margin:0 0 4px; }
+.entry .title { font-size:19px; font-weight:700; margin:0 0 8px; }
+.entry .title a { color:var(--link); }
+.entry p { margin:0; }
+
+@media (max-width:820px) {
+  .page {
+    width:auto;
+    margin:0;
+    padding:24px 18px 0;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .sidebar-inner { position:static; }
+  .sidebar { display:flex; flex-wrap:wrap; align-items:flex-start; }
+  .logo { margin-right:28px; }
+  .logo .big { font-size:46px; }
+  .logo .small { letter-spacing:6px; }
+  .logo-sub { width:100%; margin:7px 0 10px 4px; order:3; }
+  .nav { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:8px; }
+  .nav li { margin:0; }
+  .hero-grid { grid-template-columns:1fr; gap:32px; }
+  .cta { text-align:left; }
+  .hero-banner { margin-top:24px; }
+  .hero-banner img { aspect-ratio:3 / 2; }
+  .split { grid-template-columns:1fr; gap:34px; }
+  .split-main { max-width:none; }
+  .split-aside {
+    border-left:0;
+    border-top:1px dashed rgba(111,103,90,.72);
+    padding:28px 0 0;
+  }
+  .team { grid-template-columns:1fr; gap:34px; }
+  .team .portrait { width:70%; }
+  .rule { margin:40px 0 32px; }
+  .footer { margin-top:44px; }
+}
